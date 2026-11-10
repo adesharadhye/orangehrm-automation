@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OrangeHRM Automation Dashboard</title>
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="topbar">
+      <h1>Employee Dashboard</h1>
+    </header>
+
+    <section class="notice notice-success" id="success-notice" role="status" hidden>
+      <div>
+        <strong>Employee created and verified</strong>
+        <p id="success-message"></p>
+        <a id="csv-link" href="#">Download employee list CSV</a>
+      </div>
+    </section>
+    <section class="notice notice-error" id="error-notice" role="alert" hidden>
+      <div><strong>Automation failed</strong><p id="error-message"></p></div>
+    </section>
+
+    <section class="form-card" id="login-card">
+        <div class="card-heading">
+          <h2>Sign in</h2>
+        </div>
+
+        <form id="login-form" class="automation-form">
+          <fieldset>
+            <div class="field-grid">
+              <div class="field">
+                <label for="username">Username</label>
+                <input id="username" name="username" autocomplete="username" maxlength="100" required>
+              </div>
+              <div class="field">
+                <label for="password">Password</label>
+                <input id="password" name="password" type="password" autocomplete="current-password" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <button class="submit-button" type="submit">
+            <span class="button-label">Sign in</span>
+          </button>
+          <p class="run-status" id="login-status" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <section class="form-card" id="employee-card" hidden>
+        <div class="card-heading">
+          <h2>Add employee</h2>
+          <button class="logout-button" id="logout-button" type="button">Log out</button>
+        </div>
+
+        <form id="automation-form" class="automation-form">
+          <fieldset>
+            <div class="field-grid">
+              <div class="field">
+                <label for="first_name">First name</label>
+                <input id="first_name" name="first_name" autocomplete="given-name" maxlength="100" required>
+              </div>
+              <div class="field">
+                <label for="last_name">Last name</label>
+                <input id="last_name" name="last_name" autocomplete="family-name" maxlength="100" required>
+              </div>
+              <div class="field field-wide">
+                <label for="employee_id">Employee ID</label>
+                <input id="employee_id" name="employee_id" autocomplete="off" maxlength="20" required>
+              </div>
+            </div>
+          </fieldset>
+
+          <button class="submit-button" type="submit">
+            <span class="button-label">Add employee</span>
+          </button>
+          <p class="run-status" id="run-status" aria-live="polite"></p>
+        </form>
+    </section>
+
+    <section class="results-card" id="results-card" hidden>
+      <div class="card-heading">
+        <h2>Employee list</h2>
+        <span class="result-count" id="result-count"></span>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead id="employee-head"></thead>
+          <tbody id="employee-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+  <script src="dashboard.js"></script>
+</body>
+</html>
